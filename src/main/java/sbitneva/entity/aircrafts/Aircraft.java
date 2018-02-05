@@ -9,6 +9,19 @@ public class Aircraft {
     private int fuelConsumption;
     private int carriageCapacity;
 
+    public Aircraft() {
+
+    }
+
+    public Aircraft(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        this.id = id;
+        this.name = name;
+        this.capacity = capacity;
+        this.flightRange = flightRange;
+        this.fuelConsumption = fuelConsumption;
+        this.carriageCapacity = carriageCapacity;
+    }
+
     public String getId() {
         return id;
     }
@@ -62,7 +75,7 @@ public class Aircraft {
         return "\nAircraft {" +
                 "id = '" + id + " \t" +
                 ", name= '" + name + "," +
-                " \t flightRange= " + flightRange +  "," +
+                " \t flightRange= " + flightRange + "," +
                 " \t fuelConsumption= " + fuelConsumption +
                 " }";
     }

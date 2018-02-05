@@ -8,6 +8,14 @@ public class PassengerHelicopter extends Helicopter implements Passengers {
 
     private ArrayList<Passenger> passengersList = new ArrayList<>();
 
+    public PassengerHelicopter() {
+        super();
+    }
+
+    public PassengerHelicopter(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+    }
+
     @Override
     public void addPassenger(Passenger passenger) {
         passengersList.add(passenger);

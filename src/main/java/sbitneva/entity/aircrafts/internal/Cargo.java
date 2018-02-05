@@ -5,6 +5,15 @@ public class Cargo {
     private String id;
     private int cargoWeight;
 
+    public Cargo() {
+
+    }
+
+    public Cargo(String id, int cargoWeight) {
+        this.id = id;
+        this.cargoWeight = cargoWeight;
+    }
+
     public String getId() {
         return id;
     }

@@ -10,11 +10,16 @@ public class Main {
 
     public static Scanner in = new Scanner(System.in);
 
-    public static void main(String... args) {
-        System.out.println(Menu.actions);
-
+    private static void initAirline() {
         AirlineDao airlineDao = AirlineDaoFactory.getAirlineXmlDao();
         airlineDao.loadAircrafts();
+    }
+
+    public static void main(String... args) {
+        Menu menu = Menu.getMenu();
+        menu.init();
+        initAirline();
+
         while (true) {
             String action = in.next();
             Menu.processAction(action);

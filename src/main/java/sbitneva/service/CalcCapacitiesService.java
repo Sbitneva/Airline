@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class CalcCapacitiesService {
     private static CalcCapacitiesService service = new CalcCapacitiesService();
-    private CalcCapacitiesService(){
+
+    private CalcCapacitiesService() {
 
     }
 
@@ -15,7 +16,7 @@ public class CalcCapacitiesService {
         return service;
     }
 
-    public void calc(){
+    public void calc() {
         Airline airline = Airline.getAirline();
         ArrayList<Aircraft> aircrafts = airline.getAircrafts();
         int totalCapacity = 0;
@@ -24,8 +25,8 @@ public class CalcCapacitiesService {
             totalCapacity += aircraft.getCapacity();
             carriageCapacity += aircraft.getCarriageCapacity();
         }
+        airline.setTotalCapacity(totalCapacity);
+        airline.setCarriageCapacity(carriageCapacity);
 
-        System.out.println("total airline capacity = " + totalCapacity);
-        System.out.println("total carriage airline capacity = " + carriageCapacity);
     }
 }

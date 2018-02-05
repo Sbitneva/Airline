@@ -2,7 +2,6 @@ package sbitneva.service;
 
 import sbitneva.entity.aircrafts.Aircraft;
 import sbitneva.entity.airline.Airline;
-import sbitneva.menu.Menu;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,12 +22,11 @@ public class SortByFlightRangeService {
         Airline airline = Airline.getAirline();
         ArrayList aircrafts = airline.getAircrafts();
         Collections.sort(aircrafts, new Comparator<Aircraft>() {
-            public int compare(Aircraft aircraft1, Aircraft aircraft2){
+            public int compare(Aircraft aircraft1, Aircraft aircraft2) {
                 return aircraft1.getFlightRange() - aircraft2.getFlightRange();
             }
         });
         System.out.println("Sorted aircrafts: ");
         System.out.println(airline.toString());
-        System.out.println(Menu.actions);
     }
 }

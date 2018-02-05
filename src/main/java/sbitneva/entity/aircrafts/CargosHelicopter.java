@@ -8,6 +8,14 @@ public class CargosHelicopter extends Helicopter implements Cargos {
 
     private ArrayList<Cargo> cargosList = new ArrayList<>();
 
+    public CargosHelicopter() {
+
+    }
+
+    public CargosHelicopter(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+    }
+
     public void addCargo(Cargo cargo) {
         cargosList.add(cargo);
     }

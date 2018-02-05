@@ -2,12 +2,8 @@ package sbitneva.action.actions;
 
 import org.apache.log4j.Logger;
 import sbitneva.action.Action;
-import sbitneva.entity.aircrafts.Aircraft;
 import sbitneva.entity.airline.Airline;
-import sbitneva.menu.Menu;
 import sbitneva.service.CalcCapacitiesService;
-
-import java.util.ArrayList;
 
 public class CalcCapacitiesAction implements Action {
 
@@ -16,9 +12,11 @@ public class CalcCapacitiesAction implements Action {
     @Override
     public void execute() {
         log.debug("execution started");
+        Airline airline = Airline.getAirline();
+
         CalcCapacitiesService service = CalcCapacitiesService.getService();
         service.calc();
-        System.out.println("\n" + Menu.actions);
-
+        System.out.println("total airline capacity = " + airline.getTotalCapacity());
+        System.out.println("total carriage airline capacity = " + airline.getCarriageCapacity());
     }
 }

@@ -2,7 +2,6 @@ package sbitneva.action.actions;
 
 import org.apache.log4j.Logger;
 import sbitneva.action.Action;
-import sbitneva.entity.airline.Airline;
 import sbitneva.service.SortByFlightRangeService;
 
 

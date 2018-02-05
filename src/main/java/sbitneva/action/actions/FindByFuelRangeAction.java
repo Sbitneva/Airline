@@ -2,10 +2,7 @@ package sbitneva.action.actions;
 
 import org.apache.log4j.Logger;
 import sbitneva.action.Action;
-import sbitneva.entity.airline.Airline;
 import sbitneva.service.FindByFuelRangeService;
-
-import java.util.InputMismatchException;
 
 import static sbitneva.Main.in;
 
@@ -25,7 +22,7 @@ public class FindByFuelRangeAction implements Action {
         System.out.println("Enter min fuel consumption range");
 
         while (minRange == -1) {
-            if(in.hasNext()) {
+            if (in.hasNext()) {
                 try {
                     minRange = Integer.parseInt(in.next());
                     if (minRange < 0) {
@@ -42,7 +39,7 @@ public class FindByFuelRangeAction implements Action {
 
         while (maxRange == -1) {
 
-            if(in.hasNext()) {
+            if (in.hasNext()) {
                 try {
                     maxRange = Integer.parseInt(in.next());
                     if (maxRange < 0) {

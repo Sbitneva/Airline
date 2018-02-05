@@ -25,9 +25,23 @@ import static sbitneva.dao.xml.AirlineXmlConstants.*;
 
 class AirlineXmlDao implements AirlineDao {
 
+    private static Logger log = Logger.getLogger(AirlineXmlDao.class.getName());
+
     private static final String SCHEMA_PATH = "xml/airline.xsd";
     private static final String XML_DATA_PATH = "xml/airline.xml";
-    private static Logger log = Logger.getLogger(AirlineXmlDao.class.getName());
+
+    private String schemaPath;
+    private String dataPath;
+
+    public AirlineXmlDao(){
+        schemaPath = SCHEMA_PATH;
+        dataPath = XML_DATA_PATH;
+    }
+
+    public AirlineXmlDao(String schemaPath, String dataPath){
+        this.schemaPath = schemaPath;
+        this.dataPath = dataPath;
+    }
 
     @Override
     public void loadAircrafts() {
@@ -97,18 +111,18 @@ class AirlineXmlDao implements AirlineDao {
     private Document loadDocument() {
         Document document = null;
 
-        boolean isValid = XmlValidator.validateAccordingToSchema(SCHEMA_PATH, XML_DATA_PATH);
+        boolean isValid = XmlValidator.validateAccordingToSchema(schemaPath, dataPath);
         if (isValid) {
             DocumentBuilderFactory dbf;
             try {
                 dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 try {
-                    document = db.parse(new File(XML_DATA_PATH));
-                    log.debug("Document from file " + SCHEMA_PATH + " is created");
+                    document = db.parse(new File(dataPath));
+                    log.debug("Document from file " + schemaPath + " is created");
 
                 } catch (IOException | SAXException e) {
-                    log.error("Document from file " + SCHEMA_PATH + " doesn't created " + e.getMessage());
+                    log.error("Document from file " + schemaPath + " doesn't created " + e.getMessage());
                 }
             } catch (ParserConfigurationException e) {
                 log.error("DocumentBuilder exception" + e.getMessage());

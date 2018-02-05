@@ -6,6 +6,16 @@ public class Passenger {
     private String lastName;
     private int luggageWeight;
 
+    public Passenger() {
+
+    }
+
+    public Passenger(String firstName, String lastName, int luggageWeight) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.luggageWeight = luggageWeight;
+    }
+
     public String getFirstName() {
         return firstName;
     }
