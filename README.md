@@ -1,6 +1,6 @@
 # GL Entry Task
 
-## Airlane
+## Airline
 
 1. Define aircraft class hierarchy. There should be 3 levels of the hierarchy.
 1. Create an airline company that stores airplanes.
