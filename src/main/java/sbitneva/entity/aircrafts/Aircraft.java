@@ -1,6 +1,6 @@
 package sbitneva.entity.aircrafts;
 
-public class Aircraft {
+public abstract class Aircraft {
 
     private String id;
     private String name;
