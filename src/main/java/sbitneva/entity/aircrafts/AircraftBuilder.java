@@ -59,7 +59,5 @@ public class AircraftBuilder {
         return new CargosAirplane(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
-    public Aircraft createAircraft() {
-        return new Aircraft(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
-    }
+
 }
