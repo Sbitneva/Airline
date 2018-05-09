@@ -1,5 +1,6 @@
 package sbitneva.entity.aircrafts;
 
+import sbitneva.entity.aircrafts.internal.Cargo;
 import sbitneva.entity.aircrafts.internal.Passenger;
 
 import java.util.ArrayList;
@@ -35,7 +36,10 @@ public class PassengerAirplane extends Airplane implements Passengers {
     public int getCarriageCapacity() {
         int carriageCapacity = 0;
         for (Passenger passenger : passengersList) {
-            carriageCapacity += passenger.getLuggageWeight();
+            ArrayList<Cargo> baggage = passenger.getBaggage();
+            for(Cargo cargo : baggage) {
+                carriageCapacity += cargo.getWeight();
+            }
         }
         this.setCarriageCapacity(carriageCapacity);
         return carriageCapacity;

@@ -1,6 +1,7 @@
 package sbitneva.entity.aircrafts.internal;
 
 public class CargoBuilder {
+
     private String id;
     private int cargoWeight;
 

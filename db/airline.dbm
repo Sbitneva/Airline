@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1-alpha1" last-position="41,0" last-zoom="1.4"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="aircrafts">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="120" y="80"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name">
+		<type name="character varying" length="60"/>
+	</column>
+	<column name="capacity" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fuel_consumption" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="type_id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="flight_range" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="aircrafts_pk" type="pk-constr" table="public.aircrafts">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="aitrcraft_types">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="700" y="140"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="type" not-null="true">
+		<type name="character varying" length="60"/>
+	</column>
+	<constraint name="aitrcraft_types_pk" type="pk-constr" table="public.aitrcraft_types">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="aircrafts_has_one_aitrcraft_types" type="rel11"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5ff3cd"
+	 src-table="public.aitrcraft_types"
+	 dst-table="public.aircrafts"
+	 src-required="false" dst-required="false"/>
+
+<table name="passengers">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="720" y="280"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="first_name" not-null="true">
+		<type name="character varying" length="60"/>
+	</column>
+	<column name="second_name" not-null="true">
+		<type name="character varying" length="70"/>
+	</column>
+	<constraint name="passengers_pk" type="pk-constr" table="public.passengers">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="baggage">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="400" y="420"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="aircraft_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="weight" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="passenger_id">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="baggage_pk" type="pk-constr" table="public.baggage">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="passenger_has_many_baggage" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#945774"
+	 src-table="public.passengers"
+	 dst-table="public.baggage"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="aircrafts_has_many_baggage" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#66b47e"
+	 src-table="public.aircrafts"
+	 dst-table="public.baggage"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

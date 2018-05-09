@@ -1,6 +1,7 @@
 package sbitneva.entity.aircrafts;
 
 public class AircraftBuilder {
+
     private String id;
     private String name;
     private int capacity;

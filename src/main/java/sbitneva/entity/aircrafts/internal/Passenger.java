@@ -1,19 +1,41 @@
 package sbitneva.entity.aircrafts.internal;
 
-public class Passenger {
+import sbitneva.entity.Entity;
 
+import java.util.ArrayList;
+
+public class Passenger implements Entity{
+
+    private Integer id;
     private String firstName;
     private String lastName;
-    private int luggageWeight;
+    private ArrayList<Cargo> baggage = new ArrayList<Cargo>();
 
     public Passenger() {
 
     }
 
-    public Passenger(String firstName, String lastName, int luggageWeight) {
+    public Passenger( Integer id, String firstName, String lastName, ArrayList<Cargo> luggageWeight) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.luggageWeight = luggageWeight;
+        this.baggage = luggageWeight;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public ArrayList<Cargo> getBaggage() {
+        return baggage;
+    }
+
+    public void setBaggage(ArrayList<Cargo> baggage) {
+        this.baggage = baggage;
     }
 
     public String getFirstName() {
@@ -32,11 +54,4 @@ public class Passenger {
         this.lastName = lastName;
     }
 
-    public int getLuggageWeight() {
-        return luggageWeight;
-    }
-
-    public void setLuggageWeight(int luggageWeight) {
-        this.luggageWeight = luggageWeight;
-    }
 }

@@ -1,6 +1,8 @@
 package sbitneva.entity.aircrafts;
 
-public abstract class Aircraft {
+import sbitneva.entity.Entity;
+
+public abstract class Aircraft implements Entity {
 
     private String id;
     private String name;

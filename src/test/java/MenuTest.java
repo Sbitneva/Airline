@@ -10,5 +10,6 @@ public class MenuTest {
         Menu.processAction("kshfijdfjvifjv");
         Menu.processAction("1");
         Menu.processAction("2");
+
     }
 }
