@@ -6,7 +6,7 @@ public class Helicopter extends Aircraft {
         super();
     }
 
-    public Helicopter(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public Helicopter(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
         super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 }

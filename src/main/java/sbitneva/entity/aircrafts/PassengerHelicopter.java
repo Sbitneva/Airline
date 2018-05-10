@@ -13,7 +13,7 @@ public class PassengerHelicopter extends Helicopter implements Passengers {
         super();
     }
 
-    public PassengerHelicopter(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public PassengerHelicopter(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
         super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
@@ -37,7 +37,7 @@ public class PassengerHelicopter extends Helicopter implements Passengers {
         int carriageCapacity = 0;
         for (Passenger passenger : passengersList) {
             ArrayList<Cargo> baggage = passenger.getBaggage();
-            for(Cargo cargo : baggage) {
+            for (Cargo cargo : baggage) {
                 carriageCapacity += cargo.getWeight();
             }
         }

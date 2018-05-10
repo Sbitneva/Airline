@@ -1,8 +1,6 @@
 package sbitneva.entity.aircrafts.internal;
 
-import sbitneva.entity.Entity;
-
-public class Cargo{
+public class Cargo {
 
     private String id;
     private int weight;
@@ -13,7 +11,7 @@ public class Cargo{
 
     public Cargo(String id, int cargoWeight) {
         this.id = id;
-        this.weight= cargoWeight;
+        this.weight = cargoWeight;
     }
 
     public String getId() {

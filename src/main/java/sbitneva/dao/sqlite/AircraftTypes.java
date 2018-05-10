@@ -1,18 +1,17 @@
-package sbitneva.dao.postgres;
+package sbitneva.dao.sqlite;
 
 import sbitneva.dao.CRUD;
 import sbitneva.entity.Entity;
-import sbitneva.entity.aircrafts.Aircraft;
-import sbitneva.entity.aircrafts.internal.Passenger;
 
-public class AircraftsDao implements CRUD {
+public class AircraftTypes implements CRUD {
+
     @Override
     public void create(Entity entity) {
 
     }
 
     @Override
-    public Aircraft read(Integer id) {
+    public Entity read(Integer id) {
         return null;
     }
 

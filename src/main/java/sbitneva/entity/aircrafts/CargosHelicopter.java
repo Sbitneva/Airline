@@ -12,7 +12,7 @@ public class CargosHelicopter extends Helicopter implements Cargos {
 
     }
 
-    public CargosHelicopter(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public CargosHelicopter(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
         super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 

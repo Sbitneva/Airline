@@ -1,9 +1,9 @@
 package sbitneva.dao;
 
-import sbitneva.dao.postgres.AircraftTypes;
-import sbitneva.dao.postgres.AircraftsDao;
-import sbitneva.dao.postgres.BaggageDao;
-import sbitneva.dao.postgres.PassengersDao;
+import sbitneva.dao.sqlite.AircraftTypes;
+import sbitneva.dao.sqlite.AircraftsDao;
+import sbitneva.dao.sqlite.BaggageDao;
+import sbitneva.dao.sqlite.PassengersDao;
 
 public class AirlineDaoFactory {
 

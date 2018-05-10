@@ -4,7 +4,8 @@ import sbitneva.entity.Entity;
 
 import java.util.ArrayList;
 
-public class Passenger implements Entity{
+
+public class Passenger implements Entity {
 
     private Integer id;
     private String firstName;
@@ -15,7 +16,7 @@ public class Passenger implements Entity{
 
     }
 
-    public Passenger( Integer id, String firstName, String lastName, ArrayList<Cargo> luggageWeight) {
+    public Passenger(Integer id, String firstName, String lastName, ArrayList<Cargo> luggageWeight) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,4 +55,13 @@ public class Passenger implements Entity{
         this.lastName = lastName;
     }
 
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", baggage=" + baggage +
+                '}';
+    }
 }

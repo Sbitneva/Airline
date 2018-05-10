@@ -12,7 +12,7 @@ public class CargosAirplane extends Airplane implements Cargos {
         super();
     }
 
-    public CargosAirplane(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public CargosAirplane(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
         super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 

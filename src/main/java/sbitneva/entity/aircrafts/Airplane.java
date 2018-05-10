@@ -6,7 +6,7 @@ public class Airplane extends Aircraft {
         super();
     }
 
-    public Airplane(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public Airplane(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
         super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 }

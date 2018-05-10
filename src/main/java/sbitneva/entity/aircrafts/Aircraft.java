@@ -4,7 +4,7 @@ import sbitneva.entity.Entity;
 
 public abstract class Aircraft implements Entity {
 
-    private String id;
+    private int id;
     private String name;
     private int capacity;
     private int flightRange;
@@ -15,7 +15,7 @@ public abstract class Aircraft implements Entity {
 
     }
 
-    public Aircraft(String id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public Aircraft(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -24,11 +24,11 @@ public abstract class Aircraft implements Entity {
         this.carriageCapacity = carriageCapacity;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

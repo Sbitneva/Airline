@@ -1,28 +1,21 @@
 package sbitneva;
 
-import sbitneva.dao.AirlineDao;
-import sbitneva.dao.AirlineDaoFactory;
-import sbitneva.menu.Menu;
-
-import java.util.Scanner;
+import org.apache.log4j.Logger;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import sbitneva.config.ApplicationConfiguration;
+import sbitneva.dao.sqlite.PassengersDao;
+import sbitneva.entity.aircrafts.internal.Passenger;
 
 public class Main {
 
-    public static Scanner in = new Scanner(System.in);
-
-    private static void initAirline() {
-        AirlineDao airlineDao = AirlineDaoFactory.getAirlineXmlDao();
-        airlineDao.loadAircrafts();
-    }
+    private static Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String... args) {
-        Menu menu = Menu.getMenu();
-        menu.init();
-        initAirline();
 
-        while (true) {
-            String action = in.next();
-            Menu.processAction(action);
-        }
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+
+
+
     }
 }

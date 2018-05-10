@@ -19,6 +19,8 @@
         <servlet-api.version>4.0.0</servlet-api.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <javax.servlet.version>1.2</javax.servlet.version>
+        <spring.version>4.1.4.RELEASE</spring.version>
+        <tomcat.version>8.5.24</tomcat.version>
     </properties>
 
     <dependencies>
@@ -84,6 +86,33 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -130,5 +159,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
