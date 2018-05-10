@@ -2,6 +2,8 @@ package sbitneva.dao.sqlite;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 import sbitneva.dao.CRUD;
 import sbitneva.entity.Entity;
 import sbitneva.entity.aircrafts.Aircraft;
@@ -13,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Repository
+@Qualifier("aircraftsDao")
 public class AircraftsDao implements CRUD {
 
     private static Logger log = Logger.getLogger(AircraftsDao.class.getName());
