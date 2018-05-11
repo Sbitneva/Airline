@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import sbitneva.dao.CRUD;
 import sbitneva.entity.Entity;
 import sbitneva.entity.aircrafts.Aircraft;
 import sbitneva.entity.aircrafts.AircraftBuilder;
@@ -14,24 +13,44 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @Repository
 @Qualifier("aircraftsDao")
-public class AircraftsDao implements CRUD {
+public class AircraftsDao {
 
     private static Logger log = Logger.getLogger(AircraftsDao.class.getName());
+
+    private static final String READ_REQUEST = "select * from aircrafts inner join aircraft_types on " +
+            "(aircrafts.id = ? and aircrafts.type_id = aircraft_types.id)";
+    private static final String READ_ALL_REQUEST = "select * from aircrafts inner join aircraft_types on " +
+            "(aircrafts.type_id = aircraft_types.id);";
+    private static final String DELETE_AIRCRAFT = "delete from aircrafts where id=?;";
+    private static final String CREATE_AIRCRAFT = "insert into aircrafts " +
+            "(name, type_id, carriage_capacity, fuel_consumption, flight_range) values ( ?, ?, ?, ?, ?)";
+
 
     @Autowired
     private DataSource dataSource;
 
-    private static final String READ_REQUEST = "select * from aircrafts inner join aircraft_types on " +
-            "(aircrafts.type_id = ? and aircrafts.type_id = aircraft_types.id);";
-    @Override
-    public void create(Entity entity) {
+    public void create(Aircraft aircraft) {
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(CREATE_AIRCRAFT)) {
+             statement.setString(1, aircraft.getName());
+            statement.setInt(2, aircraft.getTypeId());
+            statement.setInt(3, aircraft.getCarriageCapacity());
+            statement.setInt(4, aircraft.getFuelConsumption());
+            statement.setInt(5, aircraft.getFlightRange());
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            log.error(e.getClass() + " : " + e.getMessage());
+        }
 
     }
 
-    @Override
     public Aircraft read(Integer id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(READ_REQUEST)) {
@@ -40,13 +59,16 @@ public class AircraftsDao implements CRUD {
 
             if (resultSet.next()) {
 
-                return new AircraftBuilder()
-                        .setId(resultSet.getInt("id"))
-                        .setName(resultSet.getString("name")).setCapacity(resultSet.getInt("carriage_capacity"))
-                        .setFuelConsumption(resultSet.getInt("fuel_consumption"))
-                        .setFlightRange(resultSet.getInt("flight_range"))
-                        .setType(resultSet.getString("type_name"))
-                        .buildAircraft();
+                Aircraft aircraft =  new AircraftBuilder()
+                                    .setId(resultSet.getInt("id"))
+                                    .setName(resultSet.getString("name"))
+                                    .setTypeId(resultSet.getInt("type_id"))
+                                    .setCarriageCapacity(resultSet.getInt("carriage_capacity"))
+                                    .setFuelConsumption(resultSet.getInt("fuel_consumption"))
+                                    .setFlightRange(resultSet.getInt("flight_range"))
+                                    .setType(resultSet.getString("type_name"))
+                                    .buildAircraft();
+                return aircraft;
             }
 
         } catch (SQLException e) {
@@ -56,13 +78,47 @@ public class AircraftsDao implements CRUD {
         return null;
     }
 
-    @Override
     public void update(Entity entity1, Entity entity2) {
 
     }
 
-    @Override
     public void delete(Integer id) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_AIRCRAFT)) {
+            statement.setInt(1, id);
+            statement.execute();
 
+        } catch (SQLException e) {
+            log.error(e.getClass() + " : " + e.getMessage());
+        }
+
+
+    }
+
+    public ArrayList<Aircraft> readAllAircrafts() {
+
+        ArrayList<Aircraft> aircrafts = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(READ_ALL_REQUEST)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+
+                aircrafts.add(new AircraftBuilder()
+                        .setId(resultSet.getInt("id"))
+                        .setName(resultSet.getString("name"))
+                        .setCarriageCapacity(resultSet.getInt("carriage_capacity"))
+                        .setFuelConsumption(resultSet.getInt("fuel_consumption"))
+                        .setFlightRange(resultSet.getInt("flight_range"))
+                        .setType(resultSet.getString("type_name"))
+                        .buildAircraft());
+            }
+
+        } catch (SQLException e) {
+            log.error(e.getClass() + " : " + e.getMessage());
+        }
+
+        return aircrafts;
     }
 }

@@ -13,8 +13,8 @@ public class PassengerAirplane extends Airplane implements Passengers {
         super();
     }
 
-    public PassengerAirplane(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
-        super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+    public PassengerAirplane(int id, int typeId, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        super(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     @Override

@@ -13,8 +13,8 @@ public class PassengerHelicopter extends Helicopter implements Passengers {
         super();
     }
 
-    public PassengerHelicopter(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
-        super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+    public PassengerHelicopter(int id, int typeId, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        super(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     @Override

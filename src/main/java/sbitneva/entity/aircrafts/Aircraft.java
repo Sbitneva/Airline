@@ -2,9 +2,10 @@ package sbitneva.entity.aircrafts;
 
 import sbitneva.entity.Entity;
 
-public abstract class Aircraft implements Entity {
+public class Aircraft implements Entity {
 
     private int id;
+    private int typeId;
     private String name;
     private int capacity;
     private int flightRange;
@@ -15,7 +16,8 @@ public abstract class Aircraft implements Entity {
 
     }
 
-    public Aircraft(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+    public Aircraft(int id, int typeId, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        this.typeId = typeId;
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -65,20 +67,30 @@ public abstract class Aircraft implements Entity {
     }
 
     public int getCarriageCapacity() {
-        return carriageCapacity;
+        return this.carriageCapacity;
     }
 
     public void setCarriageCapacity(int carriageCapacity) {
         this.carriageCapacity = carriageCapacity;
     }
+    public int getTypeId() {
+        return this.typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
 
     @Override
     public String toString() {
-        return "\nAircraft {" +
-                "id = '" + id + " \t" +
-                ", name= '" + name + "," +
-                " \t flightRange= " + flightRange + "," +
-                " \t fuelConsumption= " + fuelConsumption +
-                " }";
+        return "Aircraft{" +
+                "id=" + id +
+                ", typeId=" + typeId +
+                ", name='" + name + '\'' +
+                ", capacity=" + capacity +
+                ", flightRange=" + flightRange +
+                ", fuelConsumption=" + fuelConsumption +
+                ", carriageCapacity=" + carriageCapacity +
+                '}';
     }
 }

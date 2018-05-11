@@ -12,8 +12,8 @@ public class CargosAirplane extends Airplane implements Cargos {
         super();
     }
 
-    public CargosAirplane(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
-        super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+    public CargosAirplane(int id, int typeId, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        super(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     public void addCargo(Cargo cargo) {

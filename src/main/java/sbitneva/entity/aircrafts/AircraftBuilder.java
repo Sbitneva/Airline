@@ -3,6 +3,7 @@ package sbitneva.entity.aircrafts;
 public class AircraftBuilder {
 
     private int id;
+    private int typeId;
     private String name;
     private int capacity;
     private int flightRange;
@@ -10,18 +11,24 @@ public class AircraftBuilder {
     private int carriageCapacity;
     private String type;
 
+
+
     public AircraftBuilder() {
 
     }
 
-
-    public AircraftBuilder setId(int id) {
-        this.id = id;
+    public AircraftBuilder setName(String name) {
+        this.name = name;
         return this;
     }
 
-    public AircraftBuilder setName(String name) {
-        this.name = name;
+    public AircraftBuilder setTypeId(int typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    public AircraftBuilder setId(int id) {
+        this.id = id;
         return this;
     }
 
@@ -50,8 +57,8 @@ public class AircraftBuilder {
         return this;
     }
 
-    public Aircraft buildAircraft(){
-        switch (this.type){
+    public Aircraft buildAircraft() {
+        switch (this.type) {
             case "passenger aircraft":
                 return createPassengerAirplane();
             case "cargo helicopter":
@@ -65,19 +72,19 @@ public class AircraftBuilder {
     }
 
     public PassengerAirplane createPassengerAirplane() {
-        return new PassengerAirplane(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+        return new PassengerAirplane(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     public PassengerHelicopter createPassengerHelicopter() {
-        return new PassengerHelicopter(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+        return new PassengerHelicopter(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     public CargosHelicopter createCargosHelicopter() {
-        return new CargosHelicopter(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+        return new CargosHelicopter(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     public CargosAirplane createCargosAirplane() {
-        return new CargosAirplane(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+        return new CargosAirplane(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
 

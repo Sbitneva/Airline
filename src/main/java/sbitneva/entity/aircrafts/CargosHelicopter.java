@@ -12,8 +12,8 @@ public class CargosHelicopter extends Helicopter implements Cargos {
 
     }
 
-    public CargosHelicopter(int id, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
-        super(id, name, capacity, flightRange, fuelConsumption, carriageCapacity);
+    public CargosHelicopter(int id, int typeId, String name, int capacity, int flightRange, int fuelConsumption, int carriageCapacity) {
+        super(id, typeId, name, capacity, flightRange, fuelConsumption, carriageCapacity);
     }
 
     public void addCargo(Cargo cargo) {
@@ -39,4 +39,6 @@ public class CargosHelicopter extends Helicopter implements Cargos {
         this.setCarriageCapacity(carriageCapacity);
         return carriageCapacity;
     }
+
+
 }

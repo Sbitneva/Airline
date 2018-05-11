@@ -14,7 +14,7 @@ import java.sql.Connection;
 @Configuration
 @ComponentScan(basePackages = "sbitneva")
 @PropertySource(value = {"classpath:db.properties"})
-public class ApplicationConfiguration {
+public class TestConfiguration {
 
     @Autowired
     private Environment env;
